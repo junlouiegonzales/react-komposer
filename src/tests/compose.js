@@ -1,9 +1,14 @@
 /* eslint react/prefer-stateless-function: 0, react/prop-types: 0 */
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import { expect } from 'chai';
+import Enzyme, { shallow, mount } from 'enzyme';
+import chai, { expect } from 'chai';
+import chaiEnzyme from 'chai-enzyme';
 import compose from '../compose';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+chai.use(chaiEnzyme());
 
 const { describe, it } = global;
 class Comp extends React.Component {
@@ -75,6 +80,7 @@ describe('compose', () => {
       const Container = compose((props, onData) => {
         onData(null, { name: 'arunoda' });
       })(Comp);
+
       const el = mount(<Container name="arunoda" />);
       expect(el.instance().child.props.name).to.be.equal('arunoda');
     });
@@ -130,7 +136,7 @@ describe('compose', () => {
       el.instance().componentWillUnmount();
 
       const run = () => onData(null, { aa: 10 });
-      expect(run).to.throw(/Tyring set data after/);
+      expect(run).to.throw('Trying to set data after component(Container(Comp)) has unmounted.');
     });
   });
 
