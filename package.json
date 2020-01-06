@@ -1,5 +1,5 @@
 {
-  "name": "react-komposer",
+  "name": "biz-react-komposer",
   "version": "1.9.1",
   "description": "Compose React containers and feed data into components. (React 16)",
   "repository": {
