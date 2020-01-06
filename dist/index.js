@@ -45,7 +45,7 @@ var stubbingMode = false;
 // loading component.
 // This is very useful in testing where we can ignore React kompser's behaviour.
 function disable() {
-  var value = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
   disableMode = value;
 }
@@ -55,7 +55,7 @@ function getDisableMode() {
 }
 
 function setStubbingMode() {
-  var value = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
   stubbingMode = value;
 }

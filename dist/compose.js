@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = compose;
 
 var _extends2 = require('babel-runtime/helpers/extends');
 
@@ -29,6 +28,8 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+exports.default = compose;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -50,7 +51,7 @@ var _ = require('./');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function compose(fn, L1, E1) {
-  var options = arguments.length <= 3 || arguments[3] === undefined ? { pure: true } : arguments[3];
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : { pure: true };
 
   return function (ChildComponent, L2, E2) {
     (0, _invariant2.default)(Boolean(ChildComponent), 'Should provide a child component to build the higher order container.');
@@ -69,13 +70,13 @@ function compose(fn, L1, E1) {
       return (0, _utils.inheritStatics)(_common_components.DummyComponent, ChildComponent);
     }
 
-    var Container = (function (_React$Component) {
+    var Container = function (_React$Component) {
       (0, _inherits3.default)(Container, _React$Component);
 
       function Container(props, context) {
         (0, _classCallCheck3.default)(this, Container);
 
-        var _this = (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(Container).call(this, props, context));
+        var _this = (0, _possibleConstructorReturn3.default)(this, (Container.__proto__ || (0, _getPrototypeOf2.default)(Container)).call(this, props, context));
 
         _this.state = {};
 
@@ -158,8 +159,9 @@ function compose(fn, L1, E1) {
       }, {
         key: '_getProps',
         value: function _getProps() {
-          var _state$payload = this.state.payload;
-          var payload = _state$payload === undefined ? {} : _state$payload;
+          var _state$payload = this.state.payload,
+              payload = _state$payload === undefined ? {} : _state$payload;
+
 
           var props = (0, _extends3.default)({}, this.props, payload);
 
@@ -181,7 +183,7 @@ function compose(fn, L1, E1) {
         }
       }]);
       return Container;
-    })(_react2.default.Component);
+    }(_react2.default.Component);
 
     return (0, _utils.inheritStatics)(Container, ChildComponent);
   };

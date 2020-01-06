@@ -4,8 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.DummyComponent = undefined;
-exports.DefaultErrorComponent = DefaultErrorComponent;
-exports.DefaultLoadingComponent = DefaultLoadingComponent;
 
 var _getPrototypeOf = require('babel-runtime/core-js/object/get-prototype-of');
 
@@ -27,18 +25,21 @@ var _inherits2 = require('babel-runtime/helpers/inherits');
 
 var _inherits3 = _interopRequireDefault(_inherits2);
 
+exports.DefaultErrorComponent = DefaultErrorComponent;
+exports.DefaultLoadingComponent = DefaultLoadingComponent;
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DummyComponent = exports.DummyComponent = (function (_React$Component) {
+var DummyComponent = exports.DummyComponent = function (_React$Component) {
   (0, _inherits3.default)(DummyComponent, _React$Component);
 
   function DummyComponent() {
     (0, _classCallCheck3.default)(this, DummyComponent);
-    return (0, _possibleConstructorReturn3.default)(this, (0, _getPrototypeOf2.default)(DummyComponent).apply(this, arguments));
+    return (0, _possibleConstructorReturn3.default)(this, (DummyComponent.__proto__ || (0, _getPrototypeOf2.default)(DummyComponent)).apply(this, arguments));
   }
 
   (0, _createClass3.default)(DummyComponent, [{
@@ -48,7 +49,7 @@ var DummyComponent = exports.DummyComponent = (function (_React$Component) {
     }
   }]);
   return DummyComponent;
-})(_react2.default.Component);
+}(_react2.default.Component);
 
 function DefaultErrorComponent(_ref) {
   var error = _ref.error;
